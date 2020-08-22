@@ -1,0 +1,28 @@
+# Spring Boot Session With Hazelcast
+An Example project for session with Hazelcast
+
+## Getting Started
+
+### How to Run
+
+* Build and start boot.
++
+[source,shell]
+----
+$ ./gradlew bootRun
+----
+* Login and get session key.
++
+[source,bash]
+----
+curl --location --request GET 'http://localhost:8080/api/auth/login' \
+--header 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' --verbose
+----
+* Get the authentication key from `x-auth-token` from above response and update token in below request
+to execute REST request.
++
+[source,bash]
+----
+$ curl --location --request GET 'http://localhost:8080/api/hello' \
+      --header 'x-auth-token: cac44371-5daa-4e58-ab31-127cbd816287'
+----
